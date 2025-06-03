@@ -1,0 +1,40 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<!-- [Head] start -->
+
+<head>
+  {% include 'layouts/head-page-meta.html' with title='Home' %}
+  {% include 'layouts/head-css.html' %}
+</head>
+
+<!-- [Head] end -->
+
+<!-- [Body] Start -->
+
+<body>
+  {% include 'layouts/layout-vertical.html' %}
+
+  <!-- [ Main Content ] start -->
+  <div class="pc-container">
+    <div class="pc-content">
+      {% include 'layouts/breadcrumb.html' with breadcrumb_item='Dashboard' breadcrumb_item_active='Default' %}
+
+      <!-- [ Main Content ] start -->
+      <div class="grid grid-cols-12 gap-x-6">
+
+        {# Aquí va todo el contenido principal que copiaste #}
+        {# Ya lo has adaptado correctamente, incluyendo imágenes con {% static %} #}
+
+      </div>
+      <!-- [ Main Content ] end -->
+    </div>
+  </div>
+  <!-- [ Main Content ] end -->
+
+  {% include 'layouts/footer-block.html' %}
+  {% include 'layouts/footer-js.html' %}
+</body>
+<!-- [Body] end -->
+
+</html>

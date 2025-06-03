@@ -1,0 +1,51 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<!-- [Head] start -->
+
+<head>
+  {% include 'layouts/head-page-meta.html' with title='Sample Page' %}
+  {% include 'layouts/head-css.html' %}
+</head>
+<!-- [Head] end -->
+
+<!-- [Body] Start -->
+
+<body>
+
+  {% include 'layouts/layout-vertical.html' %}
+
+  <!-- [ Main Content ] start -->
+  <div class="pc-container">
+    <div class="pc-content">
+      {% include 'layouts/breadcrumb.html' with breadcrumb_item='Other' breadcrumb_item_active='Sample Page' %}
+
+      <!-- [ Main Content ] start -->
+      <div class="grid grid-cols-12 gap-x-6">
+        <!-- [ sample-page ] start -->
+        <div class="col-span-12">
+          <div class="card">
+            <div class="card-header">
+              <h5>Hello card</h5>
+            </div>
+            <div class="card-body">
+              <!-- Puedes agregar aquí el contenido de tu tarjeta -->
+            </div>
+          </div>
+        </div>
+        <!-- [ sample-page ] end -->
+      </div>
+      <!-- [ Main Content ] end -->
+
+    </div>
+  </div>
+  <!-- [ Main Content ] end -->
+
+  {% include 'layouts/footer-block.html' %}
+  {% include 'layouts/footer-js.html' %}
+
+</body>
+<!-- [Body] end -->
+
+</html>

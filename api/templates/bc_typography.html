@@ -1,0 +1,61 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  {% include 'layouts/head-page-meta.html' with title='Typography' %}
+  {% include 'layouts/head-css.html' %}
+</head>
+
+<body>
+
+  {% include 'layouts/layout-vertical.html' %}
+
+  <!-- [ Main Content ] start -->
+  <div class="pc-container">
+    <div class="pc-content">
+      {% include 'layouts/breadcrumb.html' with breadcrumb_item='Basic UI' breadcrumb_item_active='Typography' %}
+
+      <!-- [ Main Content ] start -->
+      <div class="grid grid-cols-12 gap-6">
+
+        {# TODO: Aquí va todo tu contenido, que ya es HTML válido. No es necesario modificar más. #}
+
+        <!-- Puedes dejar aquí todo el contenido de tus cards, listas, etc. como ya lo tienes -->
+
+        <!-- ejemplo: -->
+        <div class="col-span-12">
+          <div class="card">
+            <div class="card-header">
+              <h5>Headings</h5>
+            </div>
+            <div class="card-body pc-component">
+              <h1>h1. Heading</h1>
+              <div class="clearfix"></div>
+              <h2>h2. Heading</h2>
+              <div class="clearfix"></div>
+              <h3>This is a H3</h3>
+              <div class="clearfix"></div>
+              <h4>This is a H4</h4>
+              <div class="clearfix"></div>
+              <h5>This is a H5</h5>
+              <div class="clearfix"></div>
+              <h6>This is a H6</h6>
+            </div>
+          </div>
+        </div>
+
+        {# ...continúa con el resto de tu contenido tal como está... #}
+
+      </div>
+      <!-- [ Main Content ] end -->
+    </div>
+  </div>
+  <!-- [ Main Content ] end -->
+
+  {% include 'layouts/footer-block.html' %}
+  {% include 'layouts/footer-js.html' %}
+
+</body>
+
+</html>

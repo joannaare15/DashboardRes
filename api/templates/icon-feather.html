@@ -1,0 +1,101 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  {% include 'layouts/head-page-meta.html' with title="Feather Icon Pack" %}
+  {% include 'layouts/head-css.html' %}
+</head>
+
+<body>
+  {% include 'layouts/layout-vertical.html' %}
+
+  <div class="pc-container">
+    <div class="pc-content">
+      {% include 'layouts/breadcrumb.html' with breadcrumb_item="Icons" breadcrumb_item_active="Feather Icon" %}
+
+      <div class="grid grid-cols-12 gap-6">
+        <div class="col-span-12">
+          <div class="card">
+            <div class="card-header">
+              <h5 class="mb-2">Feather Icon</h5>
+              <p>
+                Usa svg icon con
+                <code class="text-danger-400 text-sm">&lt;i data-feather="nombre-icono"&gt;</code>
+                en tu código HTML.
+              </p>
+            </div>
+            <div class="card-body text-center">
+              <div class="grid grid-cols-12 gap-6">
+                <div class="col-span-12 sm:col-span-6 sm:col-start-4">
+                  <input type="text" id="icon-search" class="form-control mb-4" placeholder="Buscar..." />
+                </div>
+              </div>
+              <div
+                class="i-main text-center *:relative *:cursor-pointer *:inline-flex *:items-center *:justify-center *:w-[70px] *:h-[70px] *:m-[5px] *:rounded-lg *:border *:border-theme-border dark:*:border-themedark-border"
+                id="icon-wrapper"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  {% include 'layouts/footer-block.html' %}
+  {% include 'layouts/footer-js.html' %}
+
+  <!-- Librería de copiado -->
+  <script src="{% static 'js/plugins/clipboard.min.js' %}"></script>
+
+  <!-- Script de carga de íconos -->
+  <script>
+    const icon_list = [];  // Aquí mantén tu lista de íconos (ya la tienes bien)
+
+    for (let i = 0; i < icon_list.length; i++) {
+      const icon_block = document.createElement('div');
+      icon_block.className = 'i-block';
+      icon_block.dataset.clipboardText = icon_list[i];
+      icon_block.dataset.filter = icon_list[i];
+
+      const icon_main = document.createElement('i');
+      icon_main.setAttribute('data-feather', icon_list[i]);
+      icon_main.className = 'w-5 h-5';
+      icon_block.appendChild(icon_main);
+
+      document.querySelector('#icon-wrapper').append(icon_block);
+    }
+
+    feather.replace();
+
+    window.addEventListener('load', () => {
+      const i_copy = new ClipboardJS('.i-block');
+
+      i_copy.on('success', function (e) {
+        const badge = document.createElement('span');
+        badge.className = 'ic-badge badge bg-success-500 text-white text-sm absolute bottom-1 left-2/4 -translate-x-2/4';
+        badge.innerText = 'copied';
+        e.trigger.append(badge);
+        setTimeout(() => badge.remove(), 3000);
+      });
+
+      i_copy.on('error', function (e) {
+        const badge = document.createElement('span');
+        badge.className = 'ic-badge badge bg-danger-500 text-white text-sm absolute bottom-1 left-2/4 -translate-x-2/4';
+        badge.innerText = 'Error';
+        e.trigger.append(badge);
+        setTimeout(() => badge.remove(), 3000);
+      });
+
+      document.querySelector('#icon-search').addEventListener('keyup', function () {
+        const filter = this.value.toLowerCase();
+        document.querySelectorAll('.i-main .i-block').forEach(el => {
+          const iconName = el.dataset.filter.toLowerCase();
+          el.style.display = iconName.includes(filter) ? 'inline-flex' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
